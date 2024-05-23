@@ -1,0 +1,164 @@
+/*UNIVERSIDAD AUTONOMA DEL ESTADO DE MEXICO*/
+/*CENTRO UNIVERSITARIO VALLE DE TEOTIHUACAN*/
+/*LICENCIATURA EN INFORMATICA ADMINISTRATIVA 2DO SEMESTRE*/
+/*UNIDAD DE APRENDIZAJE: ESTRUCTURA DE DATOS*/
+/*NOMBRE: INGRID CASTILLO ESPINOSA*/
+/*DOCENTE DRA EN TIE ADRIANA BUSTAMANTE ALMARAZ*/
+/*PRACCTICA 6: CONTROL ESCOLAR*/
+/*FECHA DE ENTREGA 29/04/2024*/
+
+#include <iostream> //Entrada y salida de datos
+#include <istream> //Lectura de datos 
+#include <iomanip> //Formatea la salida de datos
+#include <stdlib.h> //Herramientas para la entrada y salida de datos
+#include <conio.h> //Manipulacion de la entrada y salida de datos
+#include <stdio.h> //Archivos de cabecera
+#include <string> //Manejo de las cadenas de caracteres
+
+using namespace std; //Permite usar funciones de iostream sin poner std::
+using std:: cout; // El programa usa cout
+using std:: cin; // El programa usa cin
+using std:: endl; // El programa usa endl
+
+int main() //Punto de entrada
+{ //Inicia el programa
+	const int j=40; //Declaracion de una constante tipo entero
+	char opcion, alumno[j]; //Declaracion de una variable de tipo caracter para la opcion y el nombre del alumno, este guardara un total de 40 caracteres segun la variable j
+	string lic[1]; //Declaracion de variable de tipo cadena de caracteres para la licenciatura 
+	long cta; //Declaracion de variable de tipo long para el numero de cuenta
+	int i,n,sem; //Declaracion de variables de tipo entero 
+	//string materia[i]; //Declaracion de una variable de tipo cadena de caracter para guardar los nombres de las materias
+	float suma,cal[i]; //Declaracion de una variable de tipo flotante para la suma y las calificaciones
+	float promedio; // Declaracion de una variable de tipo flotante para el promedio
+	string licenciaturas[6]={"LIA", "ICO", "LTU", "LPS", "LDE", "LCN"}; //Declaracion de un arreglo de tipo de cadena de caracteres con todas las licenciaturas
+	
+	do{ //Comienza el ciclo do while 
+	    cout << "\n \t \t ***BIENVENIDO AL SISTEMA INTERACTIVO DE CONTROL ESCOLAR*** \n" << endl;
+	    //Solicitar datos de entrada al usuario como nombre completo del alumno, licenciatura, numero de cuenta y semestre
+	    cout << " Nombre del Alumno: \t";
+	    cin.getline(alumno,40,'\n');
+	    cout << "\n Numero de cuenta: \t";
+	    cin >> cta;
+	    cout<<"\n Elige tu Licenciatura: "<<licenciaturas[0]<<", "<<licenciaturas[1]<<", "<<licenciaturas[2]<<", "<<licenciaturas[3]<<", "<<licenciaturas[4]<<", "<<licenciaturas[5]<<"\t";
+	    cout << "\n Licenciatura (Solo siglas en mayusculas): \t";
+	    cin >> lic[0];
+	    cout << "\n Semestre: \t";
+	    cin >> sem;
+	    
+	    //El usuario ingresa el numero de calificaciones 
+	    cout << "\n\n �Cuantas calificaciones deseas ingresar? \n\t";
+	    cin >> n;
+	    
+	    //El usuario ingresa sus materias y calificaciones 
+	    cout << "\n Ingresa tus calificaciones: \n \t";
+	    for (i=1;i<=n;i++) //El ciclo dejara de pedir calificaciones cuando llegue al valor de 'n' ingresado por el usuario
+	    {
+	        //cout << "\n Materia " << i << ":\t";
+	        //cin >> materia[i];
+	        //cin.ignore();  
+	        cout << "\n Calificacion " << i << ":\t";
+	        cin >> cal[i];
+	    }
+	    
+	    for(i=1;i<=n;i++) //Con un ciclo empieza a realizar la suma de las calificaciones
+	    {
+	        suma+=cal[i]; //suma=suma+cal[i];
+	    }
+	    promedio=suma/n; //Divide la suma total entre el valor de 'n'
+	    
+	    //Se regresa el promedio final al usuario redondeando a 1 valor despues del punto decimal
+	    cout << "\n \n \t ***Promedio final*** \a" << endl;
+	    cout << "\n \t \t " << fixed << setprecision(1) << promedio << endl;
+	        
+	        if ((promedio<=10.0)&&(promedio>=9.15)) // Condicion: Si promedio es menor o igual a 10 y promedio es igual o mayor a 9.1
+	        {
+	        cout<<"\nEres un alumno brillante :)"<<endl; // Imprime en pantalla el siguiente mensaje
+	        }
+	        else if ((promedio<=9.14)&&(promedio>=8.50)) // Condicion: Si no, promedio es menor o igual a 9.0 y promedio es igual o mayor a 8.1
+	        {
+	        cout<<"\nEres un excelente alumno"<<endl; // Imprime en pantalla el siguiente mensaje
+	        }
+	        else if ((promedio<=8.49)&&(promedio>=7.0)) // Condicion: Si no, promedio es menor o igual a 8.0 y promedio es igual o mayor a 7.1
+	        {
+	        cout<<"\nEres un buen alumno"<<endl; // Imprime en pantalla el siguiente mensaje
+	        }
+	        else if ((promedio<=6.99)&&(promedio>=6.0)) // Condicion: Si no, promedio es menor o igual a 7.0 y promedio es igual o mayor a 6.1
+	        {
+	        cout<<"\nEres un alumno regular"<<endl; // Imprime en pantalla el siguiente mensaje
+	        }
+	        else if (promedio<=5.9) // Condicion: Si no, promedio es menor o igual a 5.9 y promedio es igual o mayor a 5.0
+	        {
+	        cout<<"\nEres un alumno reprobatorio"<<endl; // Imprime en pantalla el siguiente mensaje
+	        }
+	        
+	   //Imprimir los datos que el usuario introdujo al inicio del programa
+	   cout << "\n \t ***TRAYECTORIA 2021-A*** \n";
+	   cout << "\n \t Nombre: " << alumno;
+	   cout << "\n \t Numero de cuenta: " << cta;
+	        
+	        if ((lic[0]=="LIA")||(lic[0]=="lia")) //Condicion: si el valor del arreglo lic en el indice 0 es igual a LIA o el valor del arreglo lic en el indice 0 es igual a lia 
+	        {
+		      cout<<"\n \t Licenciatura: Informatica administrativa"; //Imprime en pantalla el nombre de la licenciatura sin abreviar 
+	        }
+		    else if ((lic[0]=="ICO")||(lic[0]=="ico")) //Condicion: si no, el valor del arreglo lic en el indice 0 es igual a ICO o el valor del arreglo lic en el indice 0 es igual a ico 
+		    {
+			  cout<<"\n \t Licenciatura: Ingenieria en computo"; //Imprime en pantalla el nombre de la licenciatura sin abreviar 
+		    }
+		    else if ((lic[0]=="LTU")||(lic[0]=="ltu")) //Condicion: si no, el valor del arreglo lic en el indice 0 es igual a LTU o el valor del arreglo lic en el indice 0 es igual a ltu 
+		    {
+			  cout<<"\n \t Licenciatura: Licenciatura en turismo"; //Imprime en pantalla el nombre de la licenciatura sin abreviar 
+		    }
+		    else if ((lic[0]=="LPS")||(lic[0]=="lps")) //Condicion: si no, el valor del arreglo lic en el indice 0 es igual a LPS o el valor del arreglo lic en el indice 0 es igual a lps 
+		    {
+			  cout<<"\n \t Licenciatura: Licenciatura en psicologia"; //Imprime en pantalla el nombre de la licenciatura sin abreviar 
+		    }
+		    else if ((lic[0]=="LDE")||(lic[0]=="lde")) //Condicion: si no, el valor del arreglo lic en el indice 0 es igual a LDE o el valor del arreglo lic en el indice 0 es igual a lde 
+		    {
+			  cout<<"\n \t Licenciatura: Licenciatura en derecho"; //Imprime en pantalla el nombre de la licenciatura sin abreviar 
+		    }
+		    else if((lic[0]=="LCO")||(lic[0]=="lco")) //Condicion: si no, el valor del arreglo lic en el indice 0 es igual a LCO o el valor del arreglo lic en el indice 0 es igual a lco 
+		    {
+			  cout<<"\n \t Licenciatura: Licenciatura en contaduria"; //Imprime en pantalla el nombre de la licenciatura sin abreviar 
+		    }
+		
+		cout << "\n \t Semestre: " << sem; 
+		cout << "\n \t Promedio: " << promedio;
+		
+		cout << "\n \n \t \t +++TECLA 'C' para CAPTURAR otras calificaciones o 's' para SALIR del programa+++ \t" << endl; //
+		
+		//Se le asigna el valor de 0 a las variables 
+		i=0;
+		n=0;
+		cal[i]=0;
+		suma=0;
+		promedio=0;
+		alumno[i]=0;
+		
+		system("pause"); //Realiza una pausa 
+		cin >> opcion; //El usuario ingresa la letra dependiendo de si quiere agregar mas calificaciones o finalizar 
+	}
+	while(opcion == 'c' || opcion == 'C'); //Si el usuario ingreso 'c' o 'C' vuelve a comenzar el programa
+	   
+	//Se muestra en pantalla un mensaje de despedida
+	cout << "\n \t \t MUCHAS GRACIAS POR UTILIZAR NUESTRO SISTEMA INTERACTIVO DE CONTROL ESCOLAR " << endl; 
+	cout << "\n \t \t \t \t \t ¡¡VUELVE PRONTO!! " << endl;
+	    
+	getch(); //El usuario presiona cualquier letra para dar fin a la ejecucion 
+    
+	return 0; //Retorna 0
+} //Fin del programa
+
+/*CONCLUSIÓN*/
+/*Durante esta practica aprendi a utilizar el do while y un poco mas acerca de for,tambien aprendi a
+utilizar el operador logico && y ||,se me hizo sencillo el uso de los vectores y lo mas dificil fue 
+a la hora de querer guardar los valores en la variable materia ya que no me dejaba aun utilizando cin.ignore()*/
+
+
+
+
+
+
+
+
+
+
